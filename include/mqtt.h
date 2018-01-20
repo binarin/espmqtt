@@ -1,8 +1,18 @@
 #ifndef _MQTT_H_
 #define _MQTT_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+
+#include <freertos/FreeRTOS.h>
+#include <freertos/queue.h>
+
 #include "mqtt_config.h"
 #include "mqtt_msg.h"
 #include "ringbuf.h"
@@ -118,4 +128,9 @@ void mqtt_subscribe(mqtt_client *client, const char *topic, uint8_t qos);
 void mqtt_unsubscribe(mqtt_client *client, const char *topic);
 void mqtt_publish(mqtt_client* client, const char *topic, const char *data, int len, int qos, int retain);
 void mqtt_destroy();
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif
